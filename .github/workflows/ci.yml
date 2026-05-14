@@ -42,8 +42,6 @@ jobs:
     steps:
       - name: Checkout yourls-postgresql
         uses: actions/checkout@v6
-        with:
-          path: yourls-postgresql
 
       - name: Checkout YOURLS master
         uses: actions/checkout@v6
@@ -60,21 +58,19 @@ jobs:
           coverage: none
 
       - name: Prepare YOURLS test environment
-        working-directory: yourls
         run: |
           git clone https://github.com/ozh/YOURLS-fr_FR.git user/languages/fr
           cp user/languages/fr/fr_FR.* user/languages
           cp tests/data/config/yourls-tests-config-ci.php user/config.php
 
       - name: Drop in db.php
-        run: cp yourls-postgresql/db.php user/db.php
+        run: mv db.php user/db.php
 
       - name: Run YOURLS test suite
         run: |
           pwd
           ls -lA
-          ls -lA yourls/user
-          cd yourls
+          ls -lA user
           phpunit \
             --configuration phpunit.xml.dist \
             --display-skipped \
