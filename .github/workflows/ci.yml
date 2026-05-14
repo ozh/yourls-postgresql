@@ -30,7 +30,7 @@ jobs:
         ports:
           - 5432/tcp
         env:
-          POSTGRES_USER: yourls
+          POSTGRES_USER: root
           POSTGRES_PASSWORD: secret
           POSTGRES_DB: yourls_tests
         options: >-
@@ -66,18 +66,11 @@ jobs:
           cp tests/data/config/yourls-tests-config-ci.php user/config.php
 
       - name: Drop in db.php
-        run: |
-          pwd
-          ls -lA
-          ls -lA user
-          mv yourls-postgresql/db.php user/db.php
+        run: mv yourls-postgresql/db.php user/db.php
 
       - name: Run YOURLS test suite
         run: |
-          pwd
-          ls -lA
           ls -lA user
-          ls -lA tests
           phpunit \
             --configuration phpunit.xml.dist \
             --display-skipped \
