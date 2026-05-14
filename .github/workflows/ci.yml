@@ -71,6 +71,7 @@ jobs:
       - name: Run YOURLS test suite
         run: |
           ls -lA user
+          env
           phpunit \
             --configuration phpunit.xml.dist \
             --display-skipped \
