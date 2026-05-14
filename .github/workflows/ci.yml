@@ -50,7 +50,6 @@ jobs:
         with:
           repository: YOURLS/YOURLS
           ref: master
-          path: yourls
 
       - name: Use PHP ${{ matrix.php }}
         uses: shivammathur/setup-php@v2
@@ -68,7 +67,7 @@ jobs:
           cp tests/data/config/yourls-tests-config-ci.php user/config.php
 
       - name: Drop in db.php
-        run: cp yourls-postgresql/db.php yourls/user/db.php
+        run: cp yourls-postgresql/db.php user/db.php
 
       - name: Run YOURLS test suite
         run: |
