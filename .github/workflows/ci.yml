@@ -80,8 +80,4 @@ jobs:
             --display-warnings \
             --display-errors
         env:
-          DB_HOST: 127.0.0.1
           DB_PORT: ${{ job.services.postgres.ports['5432'] }}
-          DB_USER: root
-          DB_PASSWORD: secret
-          DB_NAME: yourls_tests
