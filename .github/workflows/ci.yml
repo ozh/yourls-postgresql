@@ -68,6 +68,12 @@ jobs:
       - name: Drop in db.php
         run: cp yourls-postgresql/db.php yourls/user/db.php
 
+      - name: Debug paths
+        run: |
+          pwd
+          ls -la
+          ls -la yourls/ || echo "no yourls/ here"
+          
       - name: Run YOURLS test suite
         working-directory: yourls
         run: |
