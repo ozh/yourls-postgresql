@@ -40,14 +40,16 @@ jobs:
           --health-retries=5
 
     steps:
-      - name: Checkout yourls-postgresql
-        uses: actions/checkout@v6
-
       - name: Checkout YOURLS master
         uses: actions/checkout@v6
         with:
           repository: YOURLS/YOURLS
           ref: master
+
+      - name: Checkout yourls-postgresql
+        uses: actions/checkout@v6
+        with:
+          path: yourls-postgresql
 
       - name: Use PHP ${{ matrix.php }}
         uses: shivammathur/setup-php@v2
@@ -68,7 +70,7 @@ jobs:
           pwd
           ls -lA
           ls -lA user
-          mv db.php user/db.php
+          mv yourls-postgresql/db.php user/db.php
 
       - name: Run YOURLS test suite
         run: |
