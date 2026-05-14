@@ -64,6 +64,7 @@ jobs:
           git clone https://github.com/ozh/YOURLS-fr_FR.git user/languages/fr
           cp user/languages/fr/fr_FR.* user/languages
           cp tests/data/config/yourls-tests-config-ci.php user/config.php
+          test -f includes/vendor/autoload.php || { echo "vendor/autoload.php missing from YOURLS checkout"; exit 1; }
 
       - name: Drop in db.php
         run: cp yourls-postgresql/db.php yourls/user/db.php
