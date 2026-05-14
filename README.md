@@ -1,4 +1,6 @@
 # PostgreSQL Support for YOURLS [![Listed in Awesome YOURLS!](https://img.shields.io/badge/Awesome-YOURLS-C5A3BE)](https://github.com/YOURLS/awesome-yourls/)
+> <img width="200" alt="yourls-love-pgsql" src="https://github.com/user-attachments/assets/96e844c8-100e-4b56-9cd7-e256d0d2d458" />
+
 
 Requires [YOURLS](https://yourls.org) `1.10.4` and above.
 
