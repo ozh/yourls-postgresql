@@ -70,6 +70,7 @@ jobs:
 
       - name: Run YOURLS test suite
         run: |
+          php -i | grep -i -E 'variables_order|request_order|register_argc_argv|auto_globals'
           ls -lA user
           ls -l "$GITHUB_WORKSPACE/phpunit.xml.dist"
           cat "$GITHUB_WORKSPACE/phpunit.xml.dist"
