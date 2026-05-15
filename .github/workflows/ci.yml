@@ -69,15 +69,9 @@ jobs:
 
       - name: Run YOURLS test suite
         run: |
-          php -i | grep -i -E 'variables_order|request_order|register_argc_argv|auto_globals'
-          ls -lA user
-          ls -l "$GITHUB_WORKSPACE/phpunit.xml.dist"
-          cat "$GITHUB_WORKSPACE/phpunit.xml.dist"
-          echo 'var_dump($_REQUEST); ' >> tests/bootstrap.php
-          echo '<?php class DumpRequest extends \PHPUnit\Framework\TestCase { public function testDump() { var_dump($_REQUEST); $this->assertTrue(true); } }' > tests/tests/DumpRequest.php
-          phpunit --configuration "$GITHUB_WORKSPACE/phpunit.xml.dist" --filter testDump
+          ls -L user/db.php
           phpunit \
-            --configuration "$GITHUB_WORKSPACE/phpunit.xml.dist" \
+            --configuration phpunit.xml.dist \
             --display-skipped \
             --display-incomplete \
             --display-deprecations \
