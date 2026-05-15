@@ -71,9 +71,11 @@ jobs:
       - name: Run YOURLS test suite
         run: |
           ls -lA user
-          cat phpunit.xml.dist
+          ls -l "$GITHUB_WORKSPACE/phpunit.xml.dist"
+          cat "$GITHUB_WORKSPACE/phpunit.xml.dist"
+          echo 'var_dump($_REQUEST); ' >> tests/bootstrap.php
           phpunit \
-            --configuration phpunit.xml.dist \
+            --configuration "$GITHUB_WORKSPACE/phpunit.xml.dist" \
             --display-skipped \
             --display-incomplete \
             --display-deprecations \
