@@ -1,6 +1,5 @@
-# PostgreSQL Support for YOURLS [![Listed in Awesome YOURLS!](https://img.shields.io/badge/Awesome-YOURLS-C5A3BE)](https://github.com/YOURLS/awesome-yourls/)
-> <img width="200" alt="yourls-love-pgsql" src="https://github.com/user-attachments/assets/96e844c8-100e-4b56-9cd7-e256d0d2d458" />
-
+# PostgreSQL Support for YOURLS [![Listed in Awesome YOURLS!](https://img.shields.io/badge/Awesome-YOURLS-C5A3BE)](https://github.com/YOURLS/awesome-yourls/) [![CI](https://github.com/ozh/yourls-postgresql/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/ozh/yourls-postgresql/actions/workflows/ci.yml)
+> <img width="200" alt="yourls-love-pgsql" src="https://github.com/user-attachments/assets/96e844c8-100e-4b56-9cd7-e256d0d2d458" /> 
 
 Requires [YOURLS](https://yourls.org) `1.10.4` and above.
 
@@ -21,9 +20,8 @@ nothing to look for or activate in the Plugins admin page.
 
 Starting with YOURLS `1.10.4`, SQL queries can be rewritten on the fly. This code modifies each
 MySQL query to be compatible with [PostgreSQL](https://www.postgresql.org/). It should pass all
-[YOURLS unit tests](https://github.com/YOURLS/YOURLS/tree/master/tests) and work with all YOURLS
-features, including plugins.
-
+[YOURLS unit tests](https://github.com/ozh/yourls-postgresql/actions/workflows/ci.yml?query=branch%3Amaster)
+under various PostgreSQL versions, and work with all YOURLS features, including plugins.
 
 ## Installation
 
@@ -67,17 +65,17 @@ Then in the `psql` shell, type:
 DROP USER IF EXISTS yourls;
 CREATE USER yourls_user WITH PASSWORD 'yourls_password';
 
--- Create DB yourls_db
+-- Create DB 'yourls_db'
 CREATE DATABASE yourls_db OWNER yourls_user;
 
--- Give all priv
+-- Give all privileges to user 'yourls_user' on DB 'yourls_db'
 GRANT ALL PRIVILEGES ON DATABASE yourls_db TO yourls_user;
 
 -- Check user, check databases
 \du
 \l
 
--- Quit:
+-- Once everything is OK, quit the psql shell
 \q
 ```
 
@@ -102,7 +100,7 @@ php pgsql_migration.php
 ## Contributing
 
 Contributions are very welcome! I aim to keep this DB engine compatible with every future
-YOURLS release and pass all unit tests.
+YOURLS release, and pass all unit tests against current YOURLS `master`
 
 If you find a bug, please open an issue or, better, submit a pull request on GitHub.
 
