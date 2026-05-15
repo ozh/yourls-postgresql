@@ -74,6 +74,8 @@ jobs:
           ls -l "$GITHUB_WORKSPACE/phpunit.xml.dist"
           cat "$GITHUB_WORKSPACE/phpunit.xml.dist"
           echo 'var_dump($_REQUEST); ' >> tests/bootstrap.php
+          echo '<?php class DumpRequest extends \PHPUnit\Framework\TestCase { public function testDump() { var_dump($_REQUEST); $this->assertTrue(true); } }' > tests/tests/DumpRequest.php
+          phpunit --configuration "$GITHUB_WORKSPACE/phpunit.xml.dist" --filter testDump
           phpunit \
             --configuration "$GITHUB_WORKSPACE/phpunit.xml.dist" \
             --display-skipped \
