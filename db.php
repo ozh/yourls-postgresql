@@ -2,8 +2,8 @@
 /**
  * DB Engine:   PostgreSQL Support
  * DB URI:      https://github.com/ozh/yourls-postgresql
- * Description: Adds support for PostgreSQL databases in YOURLS. PLACE THIS FILE IN THE USER/ DIRECTORY.
- * Version:     1.0
+ * Description: Adds support for PostgreSQL databases in YOURLS. ⚠ PLACE THIS FILE IN THE USER/ DIRECTORY.
+ * Version:     0.1
  * Author:      Ozh
  * Author URI:  https://ozh.org/
  */
@@ -208,7 +208,7 @@ function pgsql_convert_date_add($query): string {
             'SECOND' => 'second',
         ];
 
-        $pg_unit = isset($unit_map[$unit]) ? $unit_map[$unit] : strtolower($unit);
+        $pg_unit = $unit_map[$unit] ?? strtolower($unit);
 
         // PostgreSQL: column + INTERVAL 'x unit'
         return "($column + INTERVAL '$value $pg_unit')";
