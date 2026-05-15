@@ -52,12 +52,11 @@ jobs:
           path: yourls-postgresql
 
       - name: Use PHP ${{ matrix.php }}
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@2.37.1
         with:
           php-version: ${{ matrix.php }}
           extensions: mbstring, curl, zip, dom, simplexml, intl, pdo_pgsql
           tools: phpunit
-          coverage: none
 
       - name: Prepare YOURLS test environment
         run: |
