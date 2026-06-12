@@ -50,7 +50,7 @@ jobs:
           path: yourls-postgresql
 
       - name: Use PHP ${{ matrix.php }}
-        uses: shivammathur/setup-php@2.37.1
+        uses: shivammathur/setup-php@2.37.2
         with:
           php-version: ${{ matrix.php }}
           extensions: mbstring, curl, zip, dom, simplexml, intl, pdo_pgsql
