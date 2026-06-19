@@ -39,13 +39,13 @@ jobs:
 
     steps:
       - name: Checkout YOURLS master
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           repository: YOURLS/YOURLS
           ref: master
 
       - name: Checkout yourls-postgresql
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           path: yourls-postgresql
 
